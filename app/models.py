@@ -44,6 +44,18 @@ class Pessoa(models.Model):
     def __str__(self):
         return self.nome
 
+class Estudante(Pessoa):
+    matricula = models.CharField(max_length=20, unique=True)
+
+    def __str__(self):
+        return f"Estudante: {self.nome} ({self.matricula})"
+
+class Professor(Pessoa):
+    titulacao = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"Prof. {self.nome}"
+
 
 class Instituicao(models.Model):
     """RF03 - Gerenciar instituição de ensino"""
