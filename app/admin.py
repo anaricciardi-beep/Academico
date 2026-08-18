@@ -8,7 +8,7 @@ from .models import (
 
 class CidadeInline(admin.TabularInline):
     model = Cidade
-    extra = 1
+    extra = 1 #qtde de linhas em branco para cadastro
 
 class UFAdmin(admin.ModelAdmin):
     inlines = [CidadeInline]
@@ -86,7 +86,7 @@ class PessoaAdmin(admin.ModelAdmin):
 
 admin.site.register(Pessoa, PessoaAdmin)
 
-# Registros dos demais modelos que não possuem inlines principais
+
 admin.site.register(Cidade)
 admin.site.register(Estudante)
 admin.site.register(Professor)
