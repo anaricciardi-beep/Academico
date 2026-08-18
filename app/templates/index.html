@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - Sistema de Gestão</title>
+    <!-- Incluindo Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <!-- Caixa de Introdução (Jumbotron) -->
+    <div class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Olá, seja bem-vindo ao Sistema de Gestão</h1>
+            <p class="lead">Este sistema permite o gerenciamento completo de dados relacionados a pessoas, cursos, instituições e muito mais.</p>
+            <p class="lead">Explore as opções no menu acima para começar a gerenciar as informações.</p>
+        </div>
+    </div>
+
+    <!-- Tabela de Pessoas -->
+    <div class="container mt-5">
+        <h2 class="mb-4">Tabela de Pessoas</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Data de Nascimento</th>
+                    <th>Email</th>
+                    <th>Cidade</th>
+                    <th>Ocupação</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pessoa in pessoas %}
+                    <tr>
+                        <td>{{ pessoa.nome }}</td>
+                        <td>{{ pessoa.cpf }}</td>
+                        <td>{{ pessoa.data_nasc }}</td>
+                        <td>{{ pessoa.email }}</td>
+                        <td>{{ pessoa.cidade.nome }}</td>
+                        <td>{{ pessoa.ocupacao.nome }}</td>
+                        <td>
+                            <a href="{% url 'editar' pessoa.id %}" class="btn btn-warning">Editar</a>
+                        </td>
+                        <td>
+                            <a href="{% url 'delete' pessoa.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Incluindo jQuery e Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

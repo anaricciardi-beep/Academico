@@ -13,17 +13,30 @@ class Ocupacao(models.Model):
         return self.nome
 
 
+class UF(models.Model):
+    """Requisito vii - Permite o Inline de UF e Cidades"""
+    nome = models.CharField(max_length=50)
+    sigla = models.CharField(max_length=2, unique=True)
+
+    class Meta:
+        verbose_name = "UF"
+        verbose_name_plural = "UFs"
+
+    def __str__(self):
+        return self.sigla
+
+
 class Cidade(models.Model):
     """RF12 - Gerenciar cidades"""
     nome = models.CharField(max_length=100)
-    uf = models.CharField(max_length=2)
+    uf = models.ForeignKey(UF, on_delete=models.CASCADE, related_name='cidades')
 
     class Meta:
         verbose_name = "Cidade"
         verbose_name_plural = "Cidades"
 
     def __str__(self):
-        return f"{self.nome} - {self.uf}"
+        return f"{self.nome} - {self.uf.sigla}"
 
 
 class Pessoa(models.Model):
@@ -44,11 +57,17 @@ class Pessoa(models.Model):
     def __str__(self):
         return self.nome
 
+
 class Estudante(Pessoa):
-    matricula = models.CharField(max_length=20, unique=True)
+    codigo_estudante = models.CharField(max_length=20, unique=True)
+
+    class Meta:
+        verbose_name = "Estudante"
+        verbose_name_plural = "Estudantes"
 
     def __str__(self):
-        return f"Estudante: {self.nome} ({self.matricula})"
+        return f"Estudante: {self.nome} ({self.codigo_estudante})"
+
 
 class Professor(Pessoa):
     titulacao = models.CharField(max_length=50)
@@ -87,7 +106,7 @@ class AreaSaber(models.Model):
 
 class Turno(models.Model):
     """RF06 - Gerenciar turnos"""
-    nome = models.CharField(max_length=50)  # Ex: Matutino, Noturno
+    nome = models.CharField(max_length=50)
 
     class Meta:
         verbose_name = "Turno"
@@ -157,7 +176,7 @@ class Turma(models.Model):
 
 class TipoAvaliacao(models.Model):
     """RF15 - Manter tipos de avaliação"""
-    nome = models.CharField(max_length=100)  # Ex: Prova, Projeto, Lista, Trabalho, Seminário
+    nome = models.CharField(max_length=100)
 
     class Meta:
         verbose_name = "Tipo de Avaliação"
