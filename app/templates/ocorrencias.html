@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Ocorrências - Sistema de Gestão{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4">Ocorrências</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Pessoa</th>
+                <th>Curso</th>
+                <th>Disciplina</th>
+                <th>Data</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ocorrencia in ocorrencias %}
+                <tr>
+                    <td>{{ ocorrencia.pessoa.nome }}</td>
+                    <td>{{ ocorrencia.curso.nome }}</td>
+                    <td>{{ ocorrencia.disciplina.nome }}</td>
+                    <td>{{ ocorrencia.data }}</td>
+                    <td>{{ ocorrencia.descricao }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">Nenhuma ocorrência cadastrada.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

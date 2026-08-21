@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Matrículas - Sistema de Gestão{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4">Matrículas</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Pessoa</th>
+                <th>Curso</th>
+                <th>Instituição</th>
+                <th>Data de Início</th>
+                <th>Previsão de Término</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for matricula in matriculas %}
+                <tr>
+                    <td>{{ matricula.pessoa.nome }}</td>
+                    <td>{{ matricula.curso.nome }}</td>
+                    <td>{{ matricula.instituicao.nome }}</td>
+                    <td>{{ matricula.data_inicio }}</td>
+                    <td>{{ matricula.data_previsao_termino }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">Nenhuma matrícula cadastrada.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

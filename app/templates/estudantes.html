@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Estudantes - Sistema de Gestão{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4">Estudantes</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Código</th>
+                <th>CPF</th>
+                <th>Email</th>
+                <th>Cidade</th>
+                <th>Ocupação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estudante in estudantes %}
+                <tr>
+                    <td>{{ estudante.nome }}</td>
+                    <td>{{ estudante.codigo_estudante }}</td>
+                    <td>{{ estudante.cpf }}</td>
+                    <td>{{ estudante.email }}</td>
+                    <td>{{ estudante.cidade.nome|default:"-" }}</td>
+                    <td>{{ estudante.ocupacao.nome|default:"-" }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center">Nenhum estudante cadastrado.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

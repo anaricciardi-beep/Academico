@@ -59,3 +59,5 @@ def lista_ocorrencias(request):
 def lista_cidades(request):
     cidades = Cidade.objects.all().select_related('uf').order_by('nome')
     return render(request, 'cidades.html', {'cidades': cidades})
+
+

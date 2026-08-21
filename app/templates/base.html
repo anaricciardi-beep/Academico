@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistema de Gestão Acadêmica{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'index' %}">Sistema Acadêmico</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'pessoas' %}">Pessoas</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'estudantes' %}">Estudantes</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'professores' %}">Professores</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'instituicoes' %}">Instituições</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'cursos' %}">Cursos</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'disciplinas' %}">Disciplinas</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'curso_disciplinas' %}">Disciplinas por Curso</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'turmas' %}">Turmas</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'avaliacoes' %}">Avaliações</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'matriculas' %}">Matrículas</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'frequencias' %}">Frequências</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'ocorrencias' %}">Ocorrências</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'cidades' %}">Cidades</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4 mb-5">
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+
+</html>

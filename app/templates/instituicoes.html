@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Instituições - Sistema de Gestão{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4">Instituições de Ensino</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Site</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Cidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for instituicao in instituicoes %}
+                <tr>
+                    <td>{{ instituicao.nome }}</td>
+                    <td>{{ instituicao.site|default:"-" }}</td>
+                    <td>{{ instituicao.email }}</td>
+                    <td>{{ instituicao.telefone }}</td>
+                    <td>{{ instituicao.cidade.nome|default:"-" }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">Nenhuma instituição cadastrada.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

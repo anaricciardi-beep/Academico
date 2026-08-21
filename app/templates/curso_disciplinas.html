@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Disciplinas por Curso - Sistema de Gestão{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4">Disciplinas por Curso</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Disciplina</th>
+                <th>Turno</th>
+                <th>Carga Horária</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for relacao in relacoes %}
+                <tr>
+                    <td>{{ relacao.curso.nome }}</td>
+                    <td>{{ relacao.disciplina.nome }}</td>
+                    <td>{{ relacao.turno.nome }}</td>
+                    <td>{{ relacao.carga_horaria }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">Nenhuma relação cadastrada.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

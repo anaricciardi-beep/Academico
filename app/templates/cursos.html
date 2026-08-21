@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Cursos - Sistema de Gestão{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4">Cursos</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Carga Horária Total</th>
+                <th>Duração (meses)</th>
+                <th>Área do Saber</th>
+                <th>Instituição</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in cursos %}
+                <tr>
+                    <td>{{ curso.nome }}</td>
+                    <td>{{ curso.carga_horaria_total }}</td>
+                    <td>{{ curso.duracao_meses }}</td>
+                    <td>{{ curso.area_saber.nome }}</td>
+                    <td>{{ curso.instituicao.nome }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">Nenhum curso cadastrado.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

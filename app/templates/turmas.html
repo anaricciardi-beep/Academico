@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Turmas - Sistema de Gestão{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4">Turmas</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Turno</th>
+                <th>Nº de Alunos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for turma in turmas %}
+                <tr>
+                    <td>{{ turma.nome }}</td>
+                    <td>{{ turma.turno.nome }}</td>
+                    <td>{{ turma.alunos.count }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3" class="text-center">Nenhuma turma cadastrada.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

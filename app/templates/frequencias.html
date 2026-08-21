@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Frequências - Sistema de Gestão{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4">Frequências</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Pessoa</th>
+                <th>Curso</th>
+                <th>Disciplina</th>
+                <th>Nº de Faltas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for frequencia in frequencias %}
+                <tr>
+                    <td>{{ frequencia.pessoa.nome }}</td>
+                    <td>{{ frequencia.curso.nome }}</td>
+                    <td>{{ frequencia.disciplina.nome }}</td>
+                    <td>{{ frequencia.numero_faltas }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">Nenhuma frequência cadastrada.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

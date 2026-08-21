@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Avaliações - Sistema de Gestão{% endblock %}
+
+{% block content %}
+    <h2 class="mb-4">Avaliações</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Curso</th>
+                <th>Disciplina</th>
+                <th>Tipo</th>
+                <th>Nota</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for avaliacao in avaliacoes %}
+                <tr>
+                    <td>{{ avaliacao.descricao }}</td>
+                    <td>{{ avaliacao.curso.nome }}</td>
+                    <td>{{ avaliacao.disciplina.nome }}</td>
+                    <td>{{ avaliacao.tipo_avaliacao.nome }}</td>
+                    <td>{{ avaliacao.nota }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">Nenhuma avaliação cadastrada.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
